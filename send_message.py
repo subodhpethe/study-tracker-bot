@@ -12,8 +12,30 @@ twilio_whatsapp_number = 'whatsapp:+14155238886'
 student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
-    # add all 120 numbers here
-]
+    'whatsapp:+919325622859',
+    'whatsapp:+919823036706',
+    'whatsapp:+919021325237',
+    'whatsapp:+918788621932',
+    'whatsapp:+918788621932',
+    'whatsapp:+919975297297',
+    'whatsapp:+919284662915',
+    'whatsapp:+918530613417',
+    'whatsapp:+917020050581',
+    'whatsapp:+918530613417',
+    'whatsapp:+919284604584',
+    'whatsapp:+919370414467',
+    'whatsapp:+919422356245',
+    'whatsapp:+919637578485',
+    'whatsapp:+917276963301',
+    'whatsapp:+918180064028',
+    'whatsapp:+919764075718',
+    'whatsapp:+919529592938',
+    'whatsapp:+919112791515',
+    'whatsapp:+919422911849',
+    'whatsapp:+919284662915',
+    'whatsapp:+917499157278',
+    'whatsapp:+917559426954',
+]# add all 120 numbers here
 
 # Create Twilio client
 client = Client(account_sid, auth_token)
@@ -29,9 +51,9 @@ def send_study_message_to_all():
         print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 # Schedule the job
-schedule.every().day.at("16:30").do(send_study_message_to_all)
+schedule.every().day.at("11:15").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 16:30")
+print("Bot is running... and will send messages everyday at 11:15")
 
 # Keep the script running
 while True:
