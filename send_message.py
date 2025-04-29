@@ -35,6 +35,11 @@ student_numbers = [
     'whatsapp:+919284662915',
     'whatsapp:+917499157278',
     'whatsapp:+917559426954',
+    'whatsapp:+919823046706',
+    'whatsapp:+919823046706',
+    'whatsapp:+919823046706',
+    'whatsapp:+919975297297',
+    'whatsapp:+919021325237',
 ]# add all 120 numbers here
 
 # Create Twilio client
@@ -54,9 +59,9 @@ def send_study_message_to_all():
             print(f"❌ Error sending to {number}: {e}")
         time.sleep(1)  # Delay to respect Twilio's 1 msg/sec rate limit
 # Schedule the job
-schedule.every().day.at("11:15").do(send_study_message_to_all)
+schedule.every().day.at("14:05").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 11:15")
+print("Bot is running... and will send messages everyday at 14:05")
 
 # Keep the script running
 while True:
