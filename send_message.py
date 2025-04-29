@@ -40,16 +40,19 @@ student_numbers = [
 # Create Twilio client
 client = Client(account_sid, auth_token)
 
-# Function to send message to all students
+# Function to send message to all students with delay and error handling
 def send_study_message_to_all():
     for number in student_numbers:
-        message = client.messages.create(
-            body="🌟 Hi! How many hours did you study today? Please reply honestly. 📚",
-            from_=twilio_whatsapp_number,
-            to=number
-        )
-        print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
-
+        try:
+            message = client.messages.create(
+                body="🌟 Hi! How many hours did you study today? Please reply honestly. 📚",
+                from_=twilio_whatsapp_number,
+                to=number
+            )
+            print(f"✅ Message sent to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        except Exception as e:
+            print(f"❌ Error sending to {number}: {e}")
+        time.sleep(1)  # Delay to respect Twilio's 1 msg/sec rate limit
 # Schedule the job
 schedule.every().day.at("11:15").do(send_study_message_to_all)
 
