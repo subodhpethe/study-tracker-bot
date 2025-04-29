@@ -29,9 +29,9 @@ def send_study_message_to_all():
         print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 # Schedule the job
-schedule.every().day.at("08:50").do(send_study_message_to_all)
+schedule.every().day.at("09:05").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 08:50")
+print("Bot is running... and will send messages everyday at 09:05")
 
 # Keep the script running
 while True:
