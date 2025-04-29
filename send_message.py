@@ -59,9 +59,9 @@ def send_study_message_to_all():
             print(f"❌ Error sending to {number}: {e}")
         time.sleep(1)  # Delay to respect Twilio's 1 msg/sec rate limit
 # Schedule the job
-schedule.every().day.at("14:05").do(send_study_message_to_all)
+schedule.every().day.at("14:15").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 14:05")
+print("Bot is running... and will send messages everyday at 14:15")
 
 # Keep the script running
 while True:
