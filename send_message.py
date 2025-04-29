@@ -13,32 +13,6 @@ student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
     'whatsapp:+919325622859',
-    'whatsapp:+919823036706',
-    'whatsapp:+919021325237',
-    'whatsapp:+918788621932',
-    'whatsapp:+918788621932',
-    'whatsapp:+919975297297',
-    'whatsapp:+919284662915',
-    'whatsapp:+918530613417',
-    'whatsapp:+917020050581',
-    'whatsapp:+918530613417',
-    'whatsapp:+919284604584',
-    'whatsapp:+919370414467',
-    'whatsapp:+919422356245',
-    'whatsapp:+919637578485',
-    'whatsapp:+917276963301',
-    'whatsapp:+918180064028',
-    'whatsapp:+919764075718',
-    'whatsapp:+919529592938',
-    'whatsapp:+919112791515',
-    'whatsapp:+919422911849',
-    'whatsapp:+919284662915',
-    'whatsapp:+917499157278',
-    'whatsapp:+917559426954',
-    'whatsapp:+919823046706',
-    'whatsapp:+919823046706',
-    'whatsapp:+919823046706',
-    'whatsapp:+919975297297',
     'whatsapp:+919021325237',
 ]# add all 120 numbers here
 
@@ -61,7 +35,7 @@ def send_study_message_to_all():
         time.sleep(1)
 
 # TEMP TEST TIME — set 1-2 minutes ahead of current time
-schedule.every().day.at("17:55").do(send_study_message_to_all)
+send_study_message_to_all()
 
 print("⏳ Bot is running and waiting for the scheduled time...")
 
