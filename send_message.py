@@ -13,31 +13,27 @@ student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
     'whatsapp:+919325622859',
-    'whatsapp:+919021325237',
+    'whatsapp:+919422356245',
+    'whatsapp:+919637578485',
 ]# add all 120 numbers here
 
 # Create Twilio client
 client = Client(account_sid, auth_token)
 
-# Function to send message to all students with delay and error handling
+# Function to send message to all students
 def send_study_message_to_all():
-    print("⏰ Function called! Sending messages...")
     for number in student_numbers:
-        try:
-            message = client.messages.create(
-                body="🌟 Hi! How many hours did you study today?",
-                from_=twilio_whatsapp_number,
-                to=number
-            )
-            print(f"✅ Sent to {number} at {time.strftime('%H:%M:%S')}")
-        except Exception as e:
-            print(f"❌ Error for {number}: {e}")
-        time.sleep(1)
+        message = client.messages.create(
+            body="🌟 Hi! How many hours did you study today? Please reply honestly. 📚",
+            from_=twilio_whatsapp_number,
+            to=number
+        )
+        print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-# TEMP TEST TIME — set 1-2 minutes ahead of current time
-send_study_message_to_all()
+# Schedule the job
+schedule.every().day.at("01:48").do(send_study_message_to_all)
 
-print("⏳ Bot is running and waiting for the scheduled time...")
+print("Bot is running... and will send messages everyday at 01:48")
 
 # Keep the script running
 while True:
