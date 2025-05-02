@@ -4,22 +4,25 @@ print("✅ Script started at", time.strftime('%Y-%m-%d %H:%M:%S'))
 import schedule
 from twilio.rest import Client
 
-# Load Twilio credentials securely
+# ✅ Load credentials correctly from environment variables
 account_sid = os.getenv("TWILIO_ACCOUNT_SID")
 auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-twilio_whatsapp_number = 'whatsapp:+14155238886'  # Your sandbox number
+twilio_whatsapp_number = 'whatsapp:+14155238886'
 
 # Create Twilio client
-client = Client(account_sid, auth_token)
+try:
+    client = Client(account_sid, auth_token)
+    print("✅ Twilio client initialized")
+except Exception as e:
+    print("❌ Error initializing client:", e)
 
-# Student numbers list
+# Student numbers
 student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
-    # add more numbers here
 ]
 
-# Function to send messages one per second
+# Function to send messages
 def send_study_message_to_all():
     print(f"⏰ Triggered at {time.strftime('%Y-%m-%d %H:%M:%S')}")
     for number in student_numbers:
@@ -32,15 +35,15 @@ def send_study_message_to_all():
             print(f"✅ Sent to {number}")
         except Exception as e:
             print(f"❌ Error for {number}: {e}")
-        time.sleep(1)  # 1 message/sec rate limit
+        time.sleep(1)
 
-# Use this during testing only
-# send_study_message_to_all()
-
-# Schedule at 10:00 PM IST = 16:30 UTC
-#schedule.every().day.at("04:50").do(send_study_message_to_all)
+# TEMP: Call directly for test
 send_study_message_to_all()
+
 print("🚀 Bot is running... waiting for 10:00 PM IST (04:50 UTC)")
+
+# Optional: heartbeat log
+schedule.every(1).minutes.do(lambda: print(f"💓 Alive at {time.strftime('%H:%M:%S')}"))
 
 while True:
     schedule.run_pending()
