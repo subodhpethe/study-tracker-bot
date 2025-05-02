@@ -46,7 +46,7 @@ def send_study_message_to_all():
         time.sleep(1)
 
 # ✅ Schedule: 10:00 PM IST = 16:30 UTC
-schedule.every().day.at("11:05").do(send_study_message_to_all)
+schedule.every().day.at("11:17").do(send_study_message_to_all)
 
 # Optional heartbeat to prove the script is alive
 schedule.every(1).hours.do(lambda: print(f"💓 Still running: {time.strftime('%H:%M:%S')}"))
