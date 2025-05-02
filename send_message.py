@@ -5,8 +5,8 @@ import schedule
 from twilio.rest import Client
 
 # Load Twilio credentials securely
-account_sid = os.getenv("AC103f8bb439c5a04d17b03d9ee8d6d99b")
-auth_token = os.getenv("3e1fd58ad1875c45ef6339862654d005")
+account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+auth_token = os.getenv("TWILIO_AUTH_TOKEN")
 twilio_whatsapp_number = 'whatsapp:+14155238886'  # Your sandbox number
 
 # Create Twilio client
