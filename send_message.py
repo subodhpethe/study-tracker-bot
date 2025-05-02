@@ -37,8 +37,8 @@ def send_study_message_to_all():
 # send_study_message_to_all()
 
 # Schedule at 10:00 PM IST = 16:30 UTC
-schedule.every().day.at("04:50").do(send_study_message_to_all)
-
+#schedule.every().day.at("04:50").do(send_study_message_to_all)
+send_study_message_to_all()
 print("🚀 Bot is running... waiting for 10:00 PM IST (04:50 UTC)")
 
 while True:
