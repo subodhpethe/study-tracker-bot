@@ -1,5 +1,6 @@
 import os
 import time
+print("✅ Script started at", time.strftime('%Y-%m-%d %H:%M:%S'))
 import schedule
 from twilio.rest import Client
 
