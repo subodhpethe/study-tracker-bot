@@ -5,7 +5,7 @@ import time
 
 # Your Twilio account details
 account_sid = 'AC103f8bb439c5a04d17b03d9ee8d6d99b'
-auth_token = '903654107cffcb0d89c703e605573dd5'
+auth_token = '850c386f1187f647513a95a9163b272d'
 twilio_whatsapp_number = 'whatsapp:+14155238886'
 
 # List of student WhatsApp numbers
@@ -31,9 +31,9 @@ def send_study_message_to_all():
         print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 # Schedule the job
-schedule.every().day.at("01:48").do(send_study_message_to_all)
+schedule.every().day.at("03:25").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 01:48")
+print("Bot is running... and will send messages everyday at 03:25")
 
 # Keep the script running
 while True:
