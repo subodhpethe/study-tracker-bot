@@ -22,24 +22,28 @@ client = Client(account_sid, auth_token)
 
 # Function to send message to all students
 def send_study_message_to_all():
-    print("⏰ Function triggered — sending messages...")
+    print(f"⏰ Triggered at {time.strftime('%Y-%m-%d %H:%M:%S')}")
     for number in student_numbers:
         try:
-            message = client.messages.create(
+            client.messages.create(
                 body="🌟 Hi! How many hours did you study today? Please reply honestly. 📚",
                 from_=twilio_whatsapp_number,
                 to=number
             )
-            print(f"✅ Sent to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"✅ Sent to {number}")
         except Exception as e:
             print(f"❌ Error for {number}: {e}")
         time.sleep(1)
 
-schedule.every().day.at("04:02").do(send_study_message_to_all)
+# Log heartbeat every minute to prove the script is running
+def log_heartbeat():
+    print(f"💓 Still alive at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-print("Bot is running... and will send messages everyday at 04:02 PM IST")
+schedule.every().day.at("04:15").do(send_study_message_to_all)
+schedule.every(1).minutes.do(log_heartbeat)  # Optional: Remove later
+
+print("🚀 Bot is running... waiting for schedule")
 
 while True:
     schedule.run_pending()
-    time.sleep(10)
-   
+    time.sleep(1)
