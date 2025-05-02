@@ -27,7 +27,8 @@ except Exception as e:
 student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
-    # Add more only if they've joined the sandbox
+    'whatsapp:+918411003174',
+    'whatsapp:+919322257434',# Add more only if they've joined the sandbox
 ]
 
 # ✅ Send daily message
@@ -46,7 +47,7 @@ def send_study_message_to_all():
         time.sleep(1)
 
 # ✅ Schedule: 10:00 PM IST = 16:30 UTC
-schedule.every().day.at("11:22").do(send_study_message_to_all)
+schedule.every().day.at("16:30").do(send_study_message_to_all)
 
 # Optional heartbeat to prove the script is alive
 schedule.every(1).hours.do(lambda: print(f"💓 Still running: {time.strftime('%H:%M:%S')}"))
