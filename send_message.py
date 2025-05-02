@@ -35,12 +35,11 @@ def send_study_message_to_all():
             print(f"❌ Error for {number}: {e}")
         time.sleep(1)
 
-schedule.every().day.at("03:50").do(send_study_message_to_all)
+schedule.every().day.at("03:54").do(send_study_message_to_all)
 
-print("Bot is running... and will send messages everyday at 03:50 PM IST")
+print("Bot is running... and will send messages everyday at 03:54 PM IST")
 
 while True:
     schedule.run_pending()
     time.sleep(10)
-    schedule.run_pending()
-    time.sleep(10)
+   
