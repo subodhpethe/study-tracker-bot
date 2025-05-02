@@ -31,11 +31,12 @@ def send_study_message_to_all():
         print(f"Message sent successfully to {number} at {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 # Schedule the job
-schedule.every().day.at("03:25").do(send_study_message_to_all)
+send_study_message_to_all()  # TEMP: run immediately
+#schedule.every().day.at("03:25").do(send_study_message_to_all)
 
 print("Bot is running... and will send messages everyday at 03:25")
 
 # Keep the script running
-while True:
+#while True:
     schedule.run_pending()
     time.sleep(10)
