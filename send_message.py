@@ -1,30 +1,38 @@
 import os
 import time
-print("✅ Script started at", time.strftime('%Y-%m-%d %H:%M:%S'))
+from dotenv import load_dotenv
 import schedule
 from twilio.rest import Client
 
-# ✅ Load credentials correctly from environment variables
+print("✅ Script started at", time.strftime('%Y-%m-%d %H:%M:%S'))
+
+# ✅ Load environment variables from .env or Render env vars
+load_dotenv()
+
 account_sid = os.getenv("TWILIO_ACCOUNT_SID")
 auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-twilio_whatsapp_number = 'whatsapp:+14155238886'
+twilio_whatsapp_number = 'whatsapp:+14155238886'  # Twilio Sandbox Number
 
-# Create Twilio client
+print("SID:", account_sid)
+print("Token starts:", auth_token[:5], "...")
+
+# ✅ Create Twilio client
 try:
     client = Client(account_sid, auth_token)
     print("✅ Twilio client initialized")
 except Exception as e:
-    print("❌ Error initializing client:", e)
+    print("❌ Failed to initialize Twilio client:", e)
 
-# Student numbers
+# ✅ Your sandbox-verified student numbers
 student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
+    # Add more only if they've joined the sandbox
 ]
 
-# Function to send messages
+# ✅ Send daily message
 def send_study_message_to_all():
-    print(f"⏰ Triggered at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"⏰ Sending daily message at {time.strftime('%Y-%m-%d %H:%M:%S')}")
     for number in student_numbers:
         try:
             client.messages.create(
@@ -37,14 +45,15 @@ def send_study_message_to_all():
             print(f"❌ Error for {number}: {e}")
         time.sleep(1)
 
-# TEMP: Call directly for test
-send_study_message_to_all()
+# ✅ Schedule: 10:00 PM IST = 16:30 UTC
+schedule.every().day.at("11:05").do(send_study_message_to_all)
 
-print("🚀 Bot is running... waiting for 10:00 PM IST (04:50 UTC)")
+# Optional heartbeat to prove the script is alive
+schedule.every(1).hours.do(lambda: print(f"💓 Still running: {time.strftime('%H:%M:%S')}"))
 
-# Optional: heartbeat log
-schedule.every(1).minutes.do(lambda: print(f"💓 Alive at {time.strftime('%H:%M:%S')}"))
+print("🚀 Bot is running and waiting for schedule...")
 
 while True:
     schedule.run_pending()
     time.sleep(10)
+
