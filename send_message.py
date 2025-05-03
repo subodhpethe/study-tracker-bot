@@ -28,7 +28,14 @@ student_numbers = [
     'whatsapp:+919823036706',
     'whatsapp:+919823046706',
     'whatsapp:+918411003174',
-    'whatsapp:+919322257434',# Add more only if they've joined the sandbox
+    'whatsapp:+919322257434',
+    'whatsapp:+919322257434',
+    'whatsapp:+919529592938',
+    'whatsapp:+918766719332',
+    'whatsapp:+919370414467',
+    'whatsapp:+918411003174',
+    'whatsapp:+918411003174',
+    'whatsapp:+918411003174',# Add more only if they've joined the sandbox
 ]
 
 # ✅ Send daily message
